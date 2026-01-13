@@ -49,9 +49,9 @@ services:
     networks:
       - airflow
 
-  postgres_data:
+  postgres_app:
     image: postgres:14
-    container_name: postgres_data
+    container_name: postgres_app
     restart: always
     environment:
       POSTGRES_DB: mydata
@@ -60,11 +60,11 @@ services:
     ports:
       - "5433:5432"  # HostPort:ContainerPort
     volumes:
-      - postgres_data_volume:/var/lib/postgresql/data
+      - postgres_app_data:/var/lib/postgresql/data
     networks:
       - airflow
 
 volumes:
   mysql_data:
   minio_data:
-  postgres_data_volume:
+  postgres_app_data:
